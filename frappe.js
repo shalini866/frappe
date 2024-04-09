@@ -3,9 +3,9 @@ const axios = require('axios');
 const cron = require("node-cron");
 const sql = require('mssql')
 require('dotenv').config();
-cron.schedule("0 */1 6-23 * * *", async function () {
+cron.schedule("*/10 6-22 * * *", async function () {
     console.log("starting")
-       let date = new Date('2024-03-25');
+       let date = new Date;
        let startDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} 00:00:00.000`;
        let endDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} 23:59:59.000`;
        var faceQuery = `select * from DeviceLogs_${date.getMonth() + 1}_${date.getFullYear()} where LogDate > '${startDate}' and LogDate < '${endDate}' order by UserId desc`;
